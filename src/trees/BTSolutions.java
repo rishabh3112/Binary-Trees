@@ -109,6 +109,21 @@ public class BTSolutions {
 			return rightCount;
 		}
 	}
+	
+	// #3 Mirror of Binary tree
+	public static void mirror(BTNode<Integer> root) {
+		if(root==null) {
+			return;
+		}
+		BTNode<Integer> temp;
+		temp = root.left;
+		root.left = root.right;
+		root.right = temp;
+		mirror(root.left);
+      	mirror(root.right);	
+	}
+	
+	// #4 TODO
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		BTNode<Integer> root = levelOrderInput(s);
@@ -119,7 +134,8 @@ public class BTSolutions {
 //		else {
 //			System.out.println("false");
 //		}
-		System.out.println(getHeight(root,0));
+		mirror(root);
+		levelOrderPrint(root);
 	}
 
 }
