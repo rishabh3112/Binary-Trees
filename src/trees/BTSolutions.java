@@ -72,6 +72,7 @@ public class BTSolutions {
 	}
 	
 	// Solutions to common problems
+	
 	// #1 Find Node
 	public static boolean findNode(BTNode<Integer> root,int x) {
 		if(root == null){
@@ -93,16 +94,32 @@ public class BTSolutions {
           }
 	}
 	
+	// #2 Height of Binary tree
+	public static int getHeight(BTNode<Integer> root, int count) {
+		if(root == null) {
+			return count;
+		}
+		count+=1;
+		int leftCount = getHeight(root.left,count);
+		int rightCount = getHeight(root.right,count);
+		if(leftCount>=rightCount) {
+			return leftCount;
+		}
+		else {
+			return rightCount;
+		}
+	}
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		BTNode<Integer> root = levelOrderInput(s);
-		int dataToBeFound = s.nextInt();
-		if(findNode(root, dataToBeFound)) {
-			System.out.println("true");
-		}
-		else {
-			System.out.println("false");
-		}
+//		int dataToBeFound = s.nextInt();
+//		if(findNode(root, dataToBeFound)) {
+//			System.out.println("true");
+//		}
+//		else {
+//			System.out.println("false");
+//		}
+		System.out.println(getHeight(root,0));
 	}
 
 }
