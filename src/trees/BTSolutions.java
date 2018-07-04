@@ -2,6 +2,7 @@ package trees;
 import java.util.Scanner;
 import java.util.Queue;
 import java.util.LinkedList;
+
 public class BTSolutions {
 
 	// Input Strategies
@@ -71,12 +72,37 @@ public class BTSolutions {
 	}
 	
 	// Solutions to common problems
+	// #1 Find Node
+	public static boolean findNode(BTNode<Integer> root,int x) {
+		if(root == null){
+            return false;
+          }
+      
+          if(root.data==x){
+            return true;
+          }
+          else{
+            boolean left = findNode(root.left,x);
+            boolean right= findNode(root.right,x);
+            if(left||right){
+              return true;
+            }
+            else{
+              return false;
+            }
+          }
+	}
 	
-	// TODO Implement these problems !!
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		BTNode<Integer> root = levelOrderInput(s);
-		levelOrderPrint(root);
+		int dataToBeFound = s.nextInt();
+		if(findNode(root, dataToBeFound)) {
+			System.out.println("true");
+		}
+		else {
+			System.out.println("false");
+		}
 	}
 
 }
