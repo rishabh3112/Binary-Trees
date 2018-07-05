@@ -123,8 +123,18 @@ public class BTSolutions {
       	mirror(root.right);	
 	}
 	
-	// #4 TODO
-	// #5 TODO
+	// #4 PreOrder  TODO by @bhavya9107
+	// #5 PostOrder TODO by @bhavya9107
+	// #8 InOrder
+	public static void inOrder(BTNode<Integer> root) {
+		if(root==null) {
+			return;
+		}
+		
+		inOrder(root.left);
+		System.out.print(root.data + " ");
+		inOrder(root.right);
+	}
 	
 	// #6 Diameter of Binary Tree without pair
 	public static int diameter(BTNode<Integer> root) {
@@ -167,8 +177,7 @@ public class BTSolutions {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		BTNode<Integer> root = levelOrderInput(s);
-		Pair<Integer, Integer> result = treeDimentions(root);
-		System.out.println(result.first + " || " + result.second);
+		inOrder(root);
 	}
 
 }
