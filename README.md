@@ -20,6 +20,9 @@ BTNode
 3. Mirror of tree `#3`
 4. Diameter of tree without pair `#6`
 5. Diameter and height of tree with pair `#7`
+6. In-order traversal `#8`
+7. Pre-order traversal `#4`
+8. Post-order traversal `#5`
 
 #### Contribute
 Submit a pull request with description 😎
