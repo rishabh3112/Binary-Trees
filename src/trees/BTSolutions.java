@@ -123,8 +123,28 @@ public class BTSolutions {
       	mirror(root.right);	
 	}
 	
-	// #4 PreOrder  TODO by @bhavya9107
-	// #5 PostOrder TODO by @bhavya9107
+	// #4 PreOrder
+	public static void preOrder(BTNode<Integer> root) {
+		
+		if(root==null){
+          return;
+        }
+      	System.out.print(root.data+" ");
+      	preOrder(root.left);
+      	preOrder(root.right);
+	}
+	
+	// #5 PostOrder
+	private static void postOrder(BTNode<Integer> root) {
+		if(root==null) {
+			return;
+		}
+		
+      	postOrder(root.left);
+      	postOrder(root.right);
+      	System.out.print(root.data+" ");
+
+	}
 	// #8 InOrder
 	public static void inOrder(BTNode<Integer> root) {
 		if(root==null) {
@@ -177,7 +197,7 @@ public class BTSolutions {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		BTNode<Integer> root = levelOrderInput(s);
-		inOrder(root);
+		postOrder(root);
 	}
 
 }
