@@ -138,10 +138,37 @@ public class BTSolutions {
 		return Math.max(option1, Math.max(option2, option3));
 	}
 	
+	// #7 Diameter and height of Binary Tree using pair
+	public static Pair<Integer,Integer> treeDimentions(BTNode<Integer> root){
+		// First: Diameter
+		// Second: Height
+		if(root == null) {
+			Pair<Integer,Integer> result = new Pair<>(0, 0);
+			return result;
+		}
+		
+		Pair<Integer, Integer> leftTree = treeDimentions(root.left);
+		Pair<Integer, Integer> rightTree = treeDimentions(root.right);
+		Pair<Integer, Integer> result = new Pair<Integer, Integer>(0, 0);
+		
+		// Height
+		result.second = 1 + Math.max(leftTree.second, rightTree.second);
+		
+		// Diameter
+		int D1 = leftTree.second + rightTree.second;
+		int D2 = leftTree.first;
+		int D3 = leftTree.second;
+		result.first = Math.max(D1, Math.max(D2, D3));
+		
+		return result;
+		
+	}
+	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		BTNode<Integer> root = levelOrderInput(s);
-		System.out.println(diameter(root));
+		Pair<Integer, Integer> result = treeDimentions(root);
+		System.out.println(result.first + " || " + result.second);
 	}
 
 }
