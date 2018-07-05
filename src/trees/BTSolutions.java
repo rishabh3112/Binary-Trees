@@ -124,18 +124,24 @@ public class BTSolutions {
 	}
 	
 	// #4 TODO
+	// #5 TODO
+	
+	// #6 Diameter of Binary Tree without pair
+	public static int diameter(BTNode<Integer> root) {
+		if(root == null) {
+			return 0;
+		}
+		int option1 = getHeight(root.left,0) + getHeight(root.right, 0);
+		int option2 = diameter(root.left);
+		int option3 = diameter(root.right);
+		
+		return Math.max(option1, Math.max(option2, option3));
+	}
+	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		BTNode<Integer> root = levelOrderInput(s);
-//		int dataToBeFound = s.nextInt();
-//		if(findNode(root, dataToBeFound)) {
-//			System.out.println("true");
-//		}
-//		else {
-//			System.out.println("false");
-//		}
-		mirror(root);
-		levelOrderPrint(root);
+		System.out.println(diameter(root));
 	}
 
 }
