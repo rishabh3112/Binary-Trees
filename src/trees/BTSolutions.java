@@ -194,7 +194,7 @@ public class BTSolutions {
 		
 	}
 	
-	// #10 Construct Tree From InOrder and preOrder arrays TODO by @bhavya9107 and @rishabh3112
+	// #10 Construct Tree From InOrder and preOrder arrays
 	private static BTNode<Integer> getTreeFromPreOrderAndInOrder(int inOrderArray[], int preOrderArray[], int inStart, int inEnd, int preStart, int preEnd) {
 		if(preStart > preEnd) {
 			return null;
@@ -229,14 +229,46 @@ public class BTSolutions {
 	}
 	
 	// #11 Construct Tree From InOrder and postOrder arrays TODO by @bhavya9107 and @rishabh3112
+	private static BTNode<Integer> getTreeFromPostOrderAndInOrder(int inOrderArray[], int postOrderArray[], int inStart, int inEnd, int postStart, int postEnd) {
+		if(postStart > postEnd) {
+			return null;
+		}
+		
+		BTNode<Integer> root=new BTNode<Integer>(postOrderArray[postEnd]);
+		int rootIndex=0;
+		for(int i=inStart; i<=inEnd; i++) {
+			if(inOrderArray[i]==root.data) {
+				rootIndex=i;
+				break;
+			}
+		}
+		int leftTreeInStart = inStart;
+		int leftTreeInEnd = rootIndex - 1;
+		int leftTreePostStart = postStart;
+		int leftTreePostEnd = postStart + leftTreeInEnd - leftTreeInStart;
+		
+		
+		int rightTreeInStart = rootIndex + 1;
+		int rightTreeInEnd = inEnd;
+		int rightTreePostStart = leftTreePostEnd + 1;
+		int rightTreePostEnd = postEnd-1;
+		root.right = getTreeFromPostOrderAndInOrder(inOrderArray, postOrderArray, rightTreeInStart, rightTreeInEnd, rightTreePostStart, rightTreePostEnd);
+		root.left = getTreeFromPostOrderAndInOrder(inOrderArray, postOrderArray, leftTreeInStart, leftTreeInEnd, leftTreePostStart, leftTreePostEnd);
+		return root;
+	}
+	public static BTNode<Integer> getTreeFromPostOrderAndInOrder(int inOrderArray[], int postOrderArray[]) {
+		return getTreeFromPostOrderAndInOrder(inOrderArray, postOrderArray, 0, inOrderArray.length - 1, 0, postOrderArray.length - 1);
+	}
+	
+	
 	
 	public static void main(String[] args) {
 //		Scanner s = new Scanner(System.in);
 //		BTNode<Integer> root = levelOrderInput(s);
 		int inOrderArray[] = {4,2,5,1,3};
-		int preOrderArray[] = {1,2,4,5,3};
-		BTNode<Integer> root = getTreeFromPreOrderAndInOrder(inOrderArray, preOrderArray);
-		postOrder(root);
+		int postOrderArray[] = {4,5,2,3,1};
+		BTNode<Integer> root = getTreeFromPostOrderAndInOrder(inOrderArray, postOrderArray);
+		preOrder(root);
 	}
 
 }

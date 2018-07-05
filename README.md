@@ -24,6 +24,7 @@ BTNode
 7. Pre-order traversal `#4`
 8. Post-order traversal `#5`
 9. Construct Tree From InOrder and preOrder arrays `#10`
+10. Construct Tree From InOrder and postOrder arrays `#11`
 
 #### Contribute
 Submit a pull request with description 😎
