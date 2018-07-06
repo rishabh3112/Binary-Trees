@@ -26,5 +26,6 @@ BTNode
 9. Construct Tree From InOrder and preOrder arrays `#10`
 10. Construct Tree From InOrder and postOrder arrays `#11`
 11. Sum of all nodes `#12`
+12. is Balanced `#13`
 #### Contribute
 Submit a pull request with description 😎

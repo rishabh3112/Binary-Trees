@@ -269,6 +269,19 @@ public class BTSolutions {
 		return root.data + sum(root.left) + sum(root.right);
 	}
 	
+	// #13 isBalanced
+	public static boolean isBalanced(BTNode<Integer> root) {
+		if(root == null) {
+			return true;
+		}
+		
+		if(Math.abs(getHeight(root.left, 0) - getHeight(root.right,0)) <= 1) {
+			return isBalanced(root.left) && isBalanced(root.right);
+		}
+		else {
+			return false;
+		}
+	}
 	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
@@ -277,7 +290,7 @@ public class BTSolutions {
 //		int postOrderArray[] = {4,5,2,3,1};
 //		BTNode<Integer> root = getTreeFromPostOrderAndInOrder(inOrderArray, postOrderArray);
 //		preOrder(root);
-		System.out.println(sum(root));
+		System.out.println(isBalanced(root));
 	}
 
 }
