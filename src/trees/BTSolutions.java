@@ -71,7 +71,10 @@ public class BTSolutions {
 		}
 	}
 	
-	// Solutions to common problems
+	/*
+	 *	Solutions to issues labeled `problem`
+	 * 	`````````````````````````````````````
+	 */
 	
 	// #1 Find Node
 	public static boolean findNode(BTNode<Integer> root,int x) {
@@ -282,6 +285,27 @@ public class BTSolutions {
 			return false;
 		}
 	}
+
+	// #14 Each Level Print
+	public static void eachLevelPrint(BTNode<Integer> root) {
+		for(int i=0; i<=getHeight(root,0); i++) {
+			givenLevelPrint(root,i);
+			System.out.println("");
+		}
+	}
+	private static void givenLevelPrint(BTNode<Integer> root, int i) {
+		if(root == null) {
+			return;
+		}
+		if(i==1) {
+			System.out.print(root.data + " ");
+		}
+		else {
+			givenLevelPrint(root.left, i-1);
+			givenLevelPrint(root.right, i-1);
+		}
+		
+	}
 	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
@@ -290,7 +314,7 @@ public class BTSolutions {
 //		int postOrderArray[] = {4,5,2,3,1};
 //		BTNode<Integer> root = getTreeFromPostOrderAndInOrder(inOrderArray, postOrderArray);
 //		preOrder(root);
-		System.out.println(isBalanced(root));
+		eachLevelPrint(root);
 	}
 
 }
