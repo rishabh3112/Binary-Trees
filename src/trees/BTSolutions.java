@@ -145,6 +145,7 @@ public class BTSolutions {
       	System.out.print(root.data+" ");
 
 	}
+	
 	// #8 InOrder
 	public static void inOrder(BTNode<Integer> root) {
 		if(root==null) {
@@ -228,7 +229,7 @@ public class BTSolutions {
 		return getTreeFromPreOrderAndInOrder(inOrderArray, preOrderArray, 0, inOrderArray.length - 1, 0, preOrderArray.length - 1);
 	}
 	
-	// #11 Construct Tree From InOrder and postOrder arrays TODO by @bhavya9107 and @rishabh3112
+	// #11 Construct Tree From InOrder and postOrder arrays
 	private static BTNode<Integer> getTreeFromPostOrderAndInOrder(int inOrderArray[], int postOrderArray[], int inStart, int inEnd, int postStart, int postEnd) {
 		if(postStart > postEnd) {
 			return null;
@@ -260,15 +261,23 @@ public class BTSolutions {
 		return getTreeFromPostOrderAndInOrder(inOrderArray, postOrderArray, 0, inOrderArray.length - 1, 0, postOrderArray.length - 1);
 	}
 	
+	// #12 Sum of all nodes
+	public static int sum(BTNode<Integer> root) {
+		if(root == null) {
+			return 0;
+		}
+		return root.data + sum(root.left) + sum(root.right);
+	}
 	
 	
 	public static void main(String[] args) {
-//		Scanner s = new Scanner(System.in);
-//		BTNode<Integer> root = levelOrderInput(s);
-		int inOrderArray[] = {4,2,5,1,3};
-		int postOrderArray[] = {4,5,2,3,1};
-		BTNode<Integer> root = getTreeFromPostOrderAndInOrder(inOrderArray, postOrderArray);
-		preOrder(root);
+		Scanner s = new Scanner(System.in);
+		BTNode<Integer> root = levelOrderInput(s);
+//		int inOrderArray[] = {4,2,5,1,3};
+//		int postOrderArray[] = {4,5,2,3,1};
+//		BTNode<Integer> root = getTreeFromPostOrderAndInOrder(inOrderArray, postOrderArray);
+//		preOrder(root);
+		System.out.println(sum(root));
 	}
 
 }
