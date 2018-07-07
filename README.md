@@ -28,5 +28,8 @@ BTNode
 11. Sum of all nodes `#12`
 12. is Balanced `#13`
 13. Print each level `#14`
+14. Remove Leaf Nodes `#15`
+15. Level wise linked list `#16`
+16. Print ZigZag `#17`
 #### Contribute
 Submit a pull request with description 😎

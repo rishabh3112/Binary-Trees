@@ -1,6 +1,7 @@
 package trees;
 import java.util.Scanner;
 import java.util.Queue;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class BTSolutions {
@@ -322,6 +323,30 @@ public class BTSolutions {
 		}
 		return root;
 	}
+	
+	// #16 Level wise LinkedList
+	public static ArrayList<BTNode<Integer>> levelWiseLinkedList(BTNode<Integer> root) {
+		ArrayList<BTNode<Integer>> headList=new ArrayList<>();
+		for(int i=1; i<=getHeight(root, 0); i++) {
+			LinkedList<BTNode<Integer>> levelList= new LinkedList<>();
+			BTNode<Integer> head=givenLevelLinkedList(root, i, levelList).getFirst();
+			headList.add(i - 1, head);
+		}
+		return headList;
+	}
+	private static LinkedList<BTNode<Integer>> givenLevelLinkedList(BTNode<Integer> root, int i,LinkedList<BTNode<Integer>> levelList) {
+		if(root == null) {
+			return null;
+		}
+		if(i==1) {
+			levelList.add(root);
+			return levelList;
+		}
+		levelList = givenLevelLinkedList(root.left, i-1, levelList);
+		levelList = givenLevelLinkedList(root.right, i-1, levelList);
+		return levelList;
+	}
+	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		BTNode<Integer> root = levelOrderInput(s);
@@ -329,8 +354,10 @@ public class BTSolutions {
 //		int postOrderArray[] = {4,5,2,3,1};
 //		BTNode<Integer> root = getTreeFromPostOrderAndInOrder(inOrderArray, postOrderArray);
 //		preOrder(root);
-		root = removeLeaves(root);
-		eachLevelPrint(root);
+		ArrayList<BTNode<Integer>> list = levelWiseLinkedList(root);
+		for(int i=0 ; i<list.size() ; i++) {
+			System.out.print(list.get(i).data + " ");
+		}
 	}
-
+	
 }
