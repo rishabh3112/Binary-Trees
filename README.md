@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://avatars2.githubusercontent.com/u/15812317?s=50&v=4">
+  <img src="https://avatars0.githubusercontent.com/u/14764069?s=50&v=4">
+</p>
+
 # Binary Trees
 
 ## **Node structure**
