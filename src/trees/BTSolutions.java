@@ -138,7 +138,7 @@ public class BTSolutions {
 	}
 	
 	// #5 PostOrder
-	private static void postOrder(BTNode<Integer> root) {
+	public static void postOrder(BTNode<Integer> root) {
 		if(root==null) {
 			return;
 		}
@@ -307,6 +307,21 @@ public class BTSolutions {
 		
 	}
 	
+	// #15 Remove Leaf Nodes
+	public static BTNode<Integer> removeLeaves(BTNode<Integer> root) {
+		if(root == null) {
+			return null;
+		}
+		if(root.left == null && root.right == null) {
+			root = null;
+			return root;
+		}
+		else {
+			root.left = removeLeaves(root.left);
+			root.right = removeLeaves(root.right);
+		}
+		return root;
+	}
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		BTNode<Integer> root = levelOrderInput(s);
@@ -314,6 +329,7 @@ public class BTSolutions {
 //		int postOrderArray[] = {4,5,2,3,1};
 //		BTNode<Integer> root = getTreeFromPostOrderAndInOrder(inOrderArray, postOrderArray);
 //		preOrder(root);
+		root = removeLeaves(root);
 		eachLevelPrint(root);
 	}
 
