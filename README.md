@@ -5,7 +5,7 @@
 </p>
 
 # Binary Trees
-
+***Project is now on hold, will be continued soon***
 ## **Node structure**
 ```
 BTNode 
